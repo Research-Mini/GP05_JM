@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 새로운 Input System에서 마우스 오른쪽 버튼 입력 가져오기
+       
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             speed *= 3;

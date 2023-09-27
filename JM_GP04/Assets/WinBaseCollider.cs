@@ -18,7 +18,7 @@ public class WinBaseCollider : MonoBehaviour
             collider.isTrigger = true;
         }
 
-        // Rigidbody 컴포넌트 추가
+       
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
