@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -10,8 +11,43 @@ public class WaveSpawner : MonoBehaviour
     public float spawnRate;
 
     //float rnd = UnityEngine.Random.Range(10, 260);
+    private void Awake()
+    {
+        var winBaseCollider = FindObjectOfType<WinBaseCollider>();
+        if (winBaseCollider != null)
+        {
+            winBaseCollider.WinEvent.AddListener(ChangeWin);
+        }
+        else
+        {
+            Debug.LogError("WinBaseCollider instance not found!");
+        }
 
-    
+        var loseBaseCollider = FindObjectOfType<LoseBaseCollider>();
+        if (loseBaseCollider != null)
+        {
+            loseBaseCollider.LoseEvent.AddListener(ChangeLose);
+        }
+        else
+        {
+            Debug.LogError("LoseBaseCollider instance not found!");
+        }
+    }
+
+    private void ChangeWin()
+    {
+        Debug.Log("ChangeWin method is called.");
+        SceneManager.LoadScene("WinScene");
+    }
+
+    private void ChangeLose()
+    {
+        Debug.Log("ChangeLose method is called.");
+        SceneManager.LoadScene("LoseScene");
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,5 +85,8 @@ public class WaveSpawner : MonoBehaviour
         euler.y = Random.Range(0.0f, 360.0f);
         transform.eulerAngles = euler;
     }
+
+    
+
  
 }

@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 8236689170972421330}
   - component: {fileID: 7386312029369464629}
   - component: {fileID: 2821734458469336095}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerWizard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,6 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   rotationSpeed: 80
+  jumpForce: 5
 --- !u!114 &7386312029369464629
 MonoBehaviour:
   m_ObjectHideFlags: 0
