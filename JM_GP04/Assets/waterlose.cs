@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LoseBaseCollider : MonoBehaviour
+public class waterlose : MonoBehaviour
 {
-    public UnityEvent LoseEvent;
+    public UnityEvent WaterLoseEvent;
+    public float delay = 1f;
 
     private void Start()
     {
-        if (LoseEvent == null)
-            LoseEvent = new UnityEvent();
+        if (WaterLoseEvent == null)
+            WaterLoseEvent = new UnityEvent();
 
         Collider collider = GetComponent<Collider>();
         if (collider != null)
@@ -18,6 +19,7 @@ public class LoseBaseCollider : MonoBehaviour
             collider.isTrigger = true;
         }
 
+        
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -27,10 +29,16 @@ public class LoseBaseCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("bullet"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("player"))
         {
-            Debug.Log("Lose Event Invoked!");
-            LoseEvent.Invoke();
+            
+
+            Invoke("InvokeWaterLoseEvent", delay);
         }
+    }
+    private void InvokeWaterLoseEvent()
+    {
+        Debug.Log("WaterLose Event Invoked!");
+        WaterLoseEvent.Invoke();
     }
 }

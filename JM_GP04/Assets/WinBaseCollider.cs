@@ -11,13 +11,26 @@ public class WinBaseCollider : MonoBehaviour
     {
         if (WinEvent == null)
             WinEvent = new UnityEvent();
+       
+        Collider collider = GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.isTrigger = true;
+        }
+
+        // Rigidbody 컴포넌트 추가
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            gameObject.AddComponent<Rigidbody>().useGravity = false;
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("bullet"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("bullet"))
         {
-            Debug.Log("Win Event Invoked!");
+
             WinEvent.Invoke();
         }
     }

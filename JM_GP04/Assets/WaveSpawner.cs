@@ -10,7 +10,6 @@ public class WaveSpawner : MonoBehaviour
     public float endTime;
     public float spawnRate;
 
-    //float rnd = UnityEngine.Random.Range(10, 260);
     private void Awake()
     {
         var winBaseCollider = FindObjectOfType<WinBaseCollider>();
@@ -32,17 +31,25 @@ public class WaveSpawner : MonoBehaviour
         {
             Debug.LogError("LoseBaseCollider instance not found!");
         }
+        var waterlosecollider = FindObjectOfType<waterlose>();
+        if (waterlosecollider != null)
+        {
+            waterlosecollider.WaterLoseEvent.AddListener(ChangeLose);
+        }
+        else
+        {
+            Debug.LogError("waterlosecollider instance not found!");
+        }
     }
 
     private void ChangeWin()
     {
-        Debug.Log("ChangeWin method is called.");
         SceneManager.LoadScene("WinScene");
     }
 
     private void ChangeLose()
     {
-        Debug.Log("ChangeLose method is called.");
+       
         SceneManager.LoadScene("LoseScene");
     }
 
