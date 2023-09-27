@@ -17243,6 +17243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterBlock_50m
       objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24311,7 +24316,7 @@ GameObject:
   - component: {fileID: 1892496262}
   - component: {fileID: 1892496261}
   - component: {fileID: 1892496260}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27112,6 +27117,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWizard
       objectReference: {fileID: 0}
+    - target: {fileID: 1618368462964316848, guid: 8efa35b10740a4549be6def30b0908a4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2821734458469336095, guid: 8efa35b10740a4549be6def30b0908a4,
         type: 3}
       propertyPath: m_Actions
@@ -27191,7 +27201,7 @@ PrefabInstance:
     - target: {fileID: 8236689170972421330, guid: 8efa35b10740a4549be6def30b0908a4,
         type: 3}
       propertyPath: rotationSpeed
-      value: 75
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

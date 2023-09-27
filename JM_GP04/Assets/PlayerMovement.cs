@@ -16,9 +16,9 @@ public class PlayerMovement : MonoBehaviour
  
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
     }
   
     public void OnMove(InputValue value)
@@ -48,9 +48,12 @@ public class PlayerMovement : MonoBehaviour
            Jump(); 
         }
      
-        transform.Translate(
-            movementValue.x * Time.deltaTime, 0, movementValue.y * Time.deltaTime);
-        transform.Rotate(0, lookValue * Time.deltaTime, 0);
+        //transform.Translate(
+        //   movementValue.x * Time.deltaTime, 0, movementValue.y * Time.deltaTime);
+        //transform.Rotate(0, lookValue * Time.deltaTime, 0);
+
+        rb.AddRelativeForce(movementValue.x * Time.deltaTime, 0, movementValue.y * Time.deltaTime,ForceMode.Impulse);
+        rb.AddRelativeTorque(0, lookValue * Time.deltaTime, 0);
 
        
     }
