@@ -8600,7 +8600,7 @@ GameObject:
   - component: {fileID: 791623494}
   - component: {fileID: 791623493}
   - component: {fileID: 791623496}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube-Trigger_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10246,7 +10246,7 @@ GameObject:
   - component: {fileID: 919774162}
   - component: {fileID: 919774161}
   - component: {fileID: 919774160}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube-Static_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13815,8 +13815,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1138558426}
-  m_Layer: 7
-  m_Name: physicsObject
+  m_Layer: 10
+  m_Name: PhysicsObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19997,7 +19997,7 @@ GameObject:
   - component: {fileID: 1471500284}
   - component: {fileID: 1471500283}
   - component: {fileID: 1471500286}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube-Kinematic_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20451,7 +20451,7 @@ GameObject:
   - component: {fileID: 1502092704}
   - component: {fileID: 1502092703}
   - component: {fileID: 1502092706}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube-Kinematic_Trigger_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27154,7 +27154,7 @@ GameObject:
   - component: {fileID: 2026207880}
   - component: {fileID: 2026207882}
   - component: {fileID: 2026207881}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27771,7 +27771,7 @@ GameObject:
   - component: {fileID: 2095938334}
   - component: {fileID: 2095938333}
   - component: {fileID: 2095938336}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube-Dynamic_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
