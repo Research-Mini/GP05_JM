@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFSM : MonoBehaviour
 {
 
-    public enum EnemyState { GoToBase, AttackBase, ChasePlayer, AttackPlayer }
+    public enum EnemyState { GoToBase, AttackBase, RangeAttack }
 
     public EnemyState currentState;
 
@@ -18,7 +18,7 @@ public class EnemyFSM : MonoBehaviour
     public Sight sightSensor;
     public float baseAttackDistance;
     public float playerAttackDistance;
-
+    private float attackStartTime;
     void Awake()
     {
         baseTransform = GameObject.Find("LoseBase").transform;
@@ -31,10 +31,9 @@ public class EnemyFSM : MonoBehaviour
             GoToBase();
         else if (currentState == EnemyState.AttackBase)
             AttackBase();
-        else if (currentState == EnemyState.ChasePlayer)
-            ChasePlayer();
-        else if (currentState == EnemyState.AttackPlayer)
-            AttackPlayer();
+        else if (currentState == EnemyState.RangeAttack)
+            RangeAttack();
+       
     }
 
 
@@ -45,7 +44,7 @@ public class EnemyFSM : MonoBehaviour
         agent.SetDestination(baseTransform.position);
 
         if (sightSensor.detectedObject != null)
-            currentState = EnemyState.ChasePlayer;
+            currentState = EnemyState.RangeAttack;
 
         float distanceToBase = Vector3.Distance(transform.position, baseTransform.position);
         if (distanceToBase <= baseAttackDistance)
@@ -53,40 +52,38 @@ public class EnemyFSM : MonoBehaviour
     }
 
 
-    void ChasePlayer()
+    void RangeAttack()
     {
-        agent.isStopped = false;
-
         if (sightSensor.detectedObject == null)
         {
             currentState = EnemyState.GoToBase;
             return;
         }
 
-        agent.SetDestination(sightSensor.detectedObject.transform.position);
-
         float distanceToPlayer = Vector3.Distance(transform.position, sightSensor.detectedObject.transform.position);
-        if (distanceToPlayer <= playerAttackDistance)
-            currentState = EnemyState.AttackPlayer;
+        if (distanceToPlayer <= playerAttackDistance * 2)
+        {
+            if (!agent.isStopped)
+            {
+                agent.isStopped = true; // 처음 멈추면 시간 기록
+                attackStartTime = Time.time;
+            }
 
-    }
-
-    void AttackPlayer()
-    {
-        agent.isStopped = true;
-
-        if (sightSensor.detectedObject == null)
+            if (Time.time - attackStartTime < 2.0f) // 2초 동안 멈춤
+            {
+                LookTo(sightSensor.detectedObject.transform.position);
+                Shoot();
+            }
+            else
+            {
+                agent.isStopped = false; // 2초 후 움직임 재개
+                currentState = EnemyState.GoToBase; // 다음 행동 결정
+            }
+        }
+        else
         {
             currentState = EnemyState.GoToBase;
-            return;
         }
-
-        LookTo(sightSensor.detectedObject.transform.position);
-        Shoot();
-
-        float distanceToPlayer = Vector3.Distance(transform.position, sightSensor.detectedObject.transform.position);
-        if (distanceToPlayer > playerAttackDistance * 1.1f)
-            currentState = EnemyState.ChasePlayer;
     }
 
     void AttackBase()

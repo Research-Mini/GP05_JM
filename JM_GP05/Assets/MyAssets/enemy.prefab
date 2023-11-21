@@ -7701,8 +7701,8 @@ MonoBehaviour:
     type: 3}
   fireRate: 5
   sightSensor: {fileID: 3958751782216767607}
-  baseAttackDistance: 6
-  playerAttackDistance: 6
+  baseAttackDistance: 4
+  playerAttackDistance: 4
 --- !u!1 &8420881970122601708
 GameObject:
   m_ObjectHideFlags: 0
