@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 8236689170972421330}
   - component: {fileID: 7386312029369464629}
   - component: {fileID: 2821734458469336095}
+  - component: {fileID: 6355612378706988204}
   m_Layer: 8
   m_Name: PlayerWizard
   m_TagString: Untagged
@@ -670,6 +671,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6355612378706988204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618368462964316848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc3bd686cc787046b2fa61c2482a3c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 5654466405592886102, guid: ab285ad060d8f4c41a743078efc930fa,
+    type: 3}
 --- !u!1 &1637297897509233676
 GameObject:
   m_ObjectHideFlags: 0
